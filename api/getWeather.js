@@ -1,6 +1,7 @@
 import stdRes from '../stdRes.js'
 import http from 'http'
 import cheerio from 'cheerio'
+import cityData from '../data.json'
 
 //获取页面数据
 function filterWeather(html) {
@@ -26,7 +27,13 @@ function filterWeather(html) {
 }
 
 let getWeather = (req, res) => {
-	let url = 'http://www.weather.com.cn/weather/101010100.shtml';
+	let cityCode;
+	for(let i = 0;i < cityData.datas.length; i++){
+		if(cityData.datas[i].city == req.params.city){
+			cityCode = cityData.datas[i].code;
+		}
+	}
+	let url = 'http://www.weather.com.cn/weather/' + cityCode + '.shtml';
 	let html = '';
 	http.get(url, (resData) => {
 		resData.on('data', (data) => {
@@ -37,6 +44,5 @@ let getWeather = (req, res) => {
 			res.json(weatherResult);
 		});
 	});
-	
 };
 export default getWeather;

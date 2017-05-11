@@ -3,6 +3,6 @@ import getWeather from './api/getWeather'
 
 let router = Express.Router();
 
-router.get('/getweather', getWeather);
+router.get('/getweather/:city', getWeather);
 
 export default router;
