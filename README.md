@@ -1,5 +1,6 @@
 ## node的爬虫小练习
-### 根据提供的城市从中国天气官网http://www.weather.com.cn/爬取近七天天气
+### 根据提供的城市从中国天气官网http://www.weather.com.cn/
+### 爬取近七天天气
 ### 请求方法
 #### localhost:3000/getWeather/ + 城市汉字名
 ### 返回数据
